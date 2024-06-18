@@ -18,11 +18,14 @@ namespace WpfApp1
 {
     public partial class Prescriptions : Window
     {
+        private readonly MongoDbConnection _mongoDbConnection;
 
 
         public Prescriptions()
         {
             InitializeComponent();
+            string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
+            _mongoDbConnection = new MongoDbConnection(connectionString);
 
 
         }

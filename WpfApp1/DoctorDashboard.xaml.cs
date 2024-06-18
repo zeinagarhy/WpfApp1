@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Classes;
 
 namespace WpfApp1
 {
@@ -16,12 +19,23 @@ namespace WpfApp1
     /// </summary>
     public partial class DoctorDashboard : Window
     {
+         private readonly MongoDbConnection _mongoDbConnection;
+
         public DoctorDashboard()
         {
+            string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
+            _mongoDbConnection = new MongoDbConnection(connectionString);
+
             InitializeComponent();
-
-
+            _mongoDbConnection.ShowDatabases();
+            // Display appointments in UI
         }
+
+      
+
+    
+
+
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             // Set tooltip visibility

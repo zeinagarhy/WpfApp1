@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver.Core.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,15 @@ namespace WpfApp1
     /// </summary>
     public partial class PatientList : Window
     {
+        private readonly MongoDbConnection _mongoDbConnection;
         public PatientList()
         {
             InitializeComponent();
-        }
+           
+        string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
+        _mongoDbConnection = new MongoDbConnection(connectionString);
+
+    }
         private void Patients_Click(object sender, RoutedEventArgs e)
         {
             PatientList ap = new PatientList();

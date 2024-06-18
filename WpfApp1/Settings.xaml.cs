@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +20,17 @@ namespace WpfApp1
    
     public partial class Settings : Window
     {
-        private string connectionString = "Server=localhost;Database=UserDB;User ID=root;Password=z01061159985;";
+        private readonly MongoDbConnection _mongoDbConnection;
+        private IMongoDatabase _database;
 
         public Settings()
         {
             InitializeComponent();
-            new DB();
+            string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
+            _mongoDbConnection = new MongoDbConnection(connectionString);
+
         }
+
 
         private void ChangeUsername_Click(object sender, RoutedEventArgs e)
         {
@@ -37,39 +43,43 @@ namespace WpfApp1
                 return;
             }
 
-            ChangeUsername(currentUsername, newUsername);
+            try
+            {
+                _mongoDbConnection.ChangeUsername(currentUsername, newUsername, "Users"); // Assuming "Users" is your collection name
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-            private void ChangeUsername(string currentUsername, string newUsername)
-            {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    try
-                    {
-                        conn.Open();
-                        string query = "UPDATE Users SET Username = @NewUsername WHERE Username = @CurrentUsername";
-                        using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@CurrentUsername", currentUsername);
-                            cmd.Parameters.AddWithValue("@NewUsername", newUsername);
+        public void ChangeUsername(string currentUsername, string newUsername, string collectionName)
+        {
+            var collection = _database.GetCollection<BsonDocument>(collectionName);
 
-                            int rowsAffected = cmd.ExecuteNonQuery();
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Username updated successfully.");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Failed to update username. User not found or new username is the same as the current one.");
-                            }
-                        }
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show("An error occurred: " + ex.Message);
-                    }
+            try
+            {
+                var filter = Builders<BsonDocument>.Filter.Eq("Username", currentUsername);
+                var update = Builders<BsonDocument>.Update.Set("Username", newUsername);
+
+                var result = collection.UpdateOne(filter, update);
+
+                if (result.ModifiedCount > 0)
+                {
+                    MessageBox.Show("Username updated successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update username. User not found or new username is the same as the current one.");
                 }
             }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to update username: {ex.Message}");
+            }
+        }
+
+
 
 
 

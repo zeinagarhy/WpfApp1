@@ -149,40 +149,46 @@
                 <TextBox Width="1100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderThickness="0" Text="Search for patients"/>
             </Border>
 
-            <StackPanel Orientation="Vertical" Width="600" Height="300" Margin="175,65,775,439">
-                <Border Height="150">
-                    <StackPanel Height="120" Orientation="Horizontal">
-                        <Grid Width="300" HorizontalAlignment="Left">
-                            <Border Width="200" HorizontalAlignment="Left" Background="#F0F0F0" BorderThickness="1" BorderBrush="Gray" CornerRadius="30"></Border>
-                            <TextBlock Text="Consultations" TextAlignment="Center" FontFamily="Inter" FontSize="20" FontWeight="Bold" Width="200" Height="28" VerticalAlignment="Top" Margin="-7,35,107,0" Foreground="#54382f"/>
-                            <TextBlock Name="consultationCount" Text="00" TextAlignment="Center" FontFamily="Inter" FontSize="35" FontWeight="Bold" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="73,68,0,0" Foreground="#54382f"/>
-                            <Button Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent"></Button>
-                        </Grid>
-                        <Grid Width="300" HorizontalAlignment="Left">
-                            <Border Width="200" HorizontalAlignment="Left" Background="#F0F0F0" BorderThickness="1" BorderBrush="Gray" CornerRadius="30"></Border>
-                            <TextBlock Text="Follow ups" TextAlignment="Center" FontFamily="Inter" FontSize="20" FontWeight="Bold" Width="200" Height="28" VerticalAlignment="Top" Margin="-7,35,107,0" Foreground="#54382f"/>
-                            <TextBlock Name="followUpCount" Text="00" TextAlignment="Center" FontFamily="Inter" FontSize="35" FontWeight="Bold" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="73,68,0,0" Foreground="#54382f"/>
-                            <Button Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent"></Button>
-                        </Grid>
-                    </StackPanel>
-                </Border>
-                <Border Height="150">
-                    <StackPanel Height="120" Orientation="Horizontal">
-                        <Grid Width="300" HorizontalAlignment="Left">
-                            <Border Width="200" HorizontalAlignment="Left" Background="#F0F0F0" BorderThickness="1" BorderBrush="Gray" CornerRadius="30"></Border>
-                            <TextBlock Text="Total Patients" TextAlignment="Center" FontFamily="Inter" FontSize="20" FontWeight="Bold" Width="200" Height="28" VerticalAlignment="Top" Margin="-7,35,107,0" Foreground="#54382f"/>
-                            <TextBlock Name="totalPatientCount" Text="00" TextAlignment="Center" FontFamily="Inter" FontSize="35" FontWeight="Bold" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="73,68,0,0" Foreground="#54382f"/>
-                            <Button Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent"></Button>
-                        </Grid>
-                        <Grid Width="300" HorizontalAlignment="Left">
-                            <Border Width="200" HorizontalAlignment="Left" Background="#F0F0F0" BorderThickness="1" BorderBrush="Gray" CornerRadius="30"></Border>
-                            <TextBlock Text="Total Payment" TextAlignment="Center" FontFamily="Inter" FontSize="20" FontWeight="Bold" Width="200" Height="28" VerticalAlignment="Top" Margin="-7,35,107,0" Foreground="#54382f"/>
-                            <TextBlock x:Name="totalfeestxt" Text="00" TextAlignment="Center" FontFamily="Inter" FontSize="35" FontWeight="Bold" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="73,68,0,0" Foreground="#54382f"/>
-                            <Button Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent"></Button>
-                        </Grid>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
+            <Grid>
+                <!-- Header or other UI elements -->
+
+                <!-- Data presentation area -->
+                <StackPanel Orientation="Vertical" Width="600" Height="300" Margin="175,65,775,439">
+                    <Border Height="150">
+                        <StackPanel Height="120" Orientation="Horizontal">
+                            <Grid Width="300" HorizontalAlignment="Left">
+                                <Border Width="200" HorizontalAlignment="Left" Background="#F0F0F0" BorderThickness="1" BorderBrush="Gray" CornerRadius="30"/>
+                                <TextBlock Text="Consultations" TextAlignment="Center" FontFamily="Inter" FontSize="20" FontWeight="Bold" Width="200" Height="28" VerticalAlignment="Top" Margin="-7,35,107,0" Foreground="#54382f"/>
+                                <TextBlock Name="consultationCount" TextAlignment="Center" FontFamily="Inter" FontSize="35" FontWeight="Bold" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="73,68,0,0" Foreground="#54382f"/>
+                                <Button Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent"/>
+                            </Grid>
+                            <Grid Width="300" HorizontalAlignment="Left">
+                                <Border Width="200" HorizontalAlignment="Left" Background="#F0F0F0" BorderThickness="1" BorderBrush="Gray" CornerRadius="30"/>
+                                <TextBlock Text="Follow ups" TextAlignment="Center" FontFamily="Inter" FontSize="20" FontWeight="Bold" Width="200" Height="28" VerticalAlignment="Top" Margin="-7,35,107,0" Foreground="#54382f"/>
+                                <TextBlock Name="followUpCount" TextAlignment="Center" FontFamily="Inter" FontSize="35" FontWeight="Bold" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="73,68,0,0" Foreground="#54382f"/>
+                                <Button Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <Border Height="150">
+                        <StackPanel Height="120" Orientation="Horizontal">
+                            <Grid Width="300" HorizontalAlignment="Left">
+                                <Border Width="200" HorizontalAlignment="Left" Background="#F0F0F0" BorderThickness="1" BorderBrush="Gray" CornerRadius="30"/>
+                                <TextBlock Text="Total Patients" TextAlignment="Center" FontFamily="Inter" FontSize="20" FontWeight="Bold" Width="200" Height="28" VerticalAlignment="Top" Margin="-7,35,107,0" Foreground="#54382f"/>
+                                <TextBlock Name="totalPatientCount" TextAlignment="Center" FontFamily="Inter" FontSize="35" FontWeight="Bold" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="73,68,0,0" Foreground="#54382f"/>
+                                <Button Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent"/>
+                            </Grid>
+                            <Grid Width="300" HorizontalAlignment="Left">
+                                <Border Width="200" HorizontalAlignment="Left" Background="#F0F0F0" BorderThickness="1" BorderBrush="Gray" CornerRadius="30"/>
+                                <TextBlock Text="Total Payment" TextAlignment="Center" FontFamily="Inter" FontSize="20" FontWeight="Bold" Width="200" Height="28" VerticalAlignment="Top" Margin="-7,35,107,0" Foreground="#54382f"/>
+                                <TextBlock x:Name="totalfeestxt" TextAlignment="Center" FontFamily="Inter" FontSize="35" FontWeight="Bold" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="73,68,0,0" Foreground="#54382f"/>
+                                <Button Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            
             <Grid Margin="759,194,184,504"/>
             <Grid x:Name="shortcuts" Width="1000" Height="100">
                 <StackPanel Orientation="Horizontal">
@@ -429,14 +435,43 @@
                         <Rectangle Fill="White" Stroke="Gray" RadiusX="30" RadiusY="30"></Rectangle>
                         <StackPanel Orientation="Vertical" Width="1185" Height="220">
                             <StackPanel Orientation="Horizontal" Height="20" Background="#F0F0F0">
-                                <Grid Width="400">
-                                    <TextBlock Text="Patient" TextAlignment="Center" FontFamily="Inter" FontSize="15" FontWeight="Medium" Foreground="#54382f"></TextBlock>
-                                </Grid>
-                                <Grid Width="400">
-                                    <TextBlock Text="Time" TextAlignment="Center" FontFamily="Inter" FontSize="15" FontWeight="Medium" Foreground="#54382f"></TextBlock>
-                                </Grid>
-                                <Grid Width="400">
-                                    <TextBlock Text="Details" TextAlignment="Center" FontFamily="Inter" FontSize="15" FontWeight="Medium" Foreground="#54382f"></TextBlock>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Header or other UI elements -->
+
+                                    <!-- Data presentation area -->
+                                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <!-- Header or other UI elements -->
+
+                                            <!-- Data presentation area -->
+                                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Grid Width="400">
+                                                    <TextBlock Text="Patient" TextAlignment="Center" FontFamily="Inter" FontSize="15" FontWeight="Medium" Foreground="#54382f"/>
+                                                    <StackPanel x:Name="patientPanel"/>
+                                                </Grid>
+                                                <Grid Width="400">
+                                                    <TextBlock Text="Time" TextAlignment="Center" FontFamily="Inter" FontSize="15" FontWeight="Medium" Foreground="#54382f"/>
+                                                    <StackPanel x:Name="timePanel"/>
+                                                </Grid>
+                                                <Grid Width="400">
+                                                    <TextBlock Text="Details" TextAlignment="Center" FontFamily="Inter" FontSize="15" FontWeight="Medium" Foreground="#54382f"/>
+                                                    <StackPanel x:Name="detailsPanel"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
                                 </Grid>
                             </StackPanel>
                             <Grid Height="200">

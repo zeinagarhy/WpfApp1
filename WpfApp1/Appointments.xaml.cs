@@ -3,22 +3,56 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using WpfApp1.Classes;
 
 namespace WpfApp1
 {
     public partial class Appointments : Window
     {
+        public class AppointmentInfo
+        {
+            public string PatientName { get; set; }
+            public string PatientID { get; set; }
+            public DateTime AppointmentTime { get; set; }
+        }
+        private List<AppointmentInfo> appointmentsList;
+        private readonly MongoDbConnection _mongoDbConnection;
+
         public Appointments()
         {
             InitializeComponent();
-           
-            string today = DateTime.Today.ToString("dd-MM-yyyy");
-            TodayDate.Text = today;
-        }
-        private void mysql_connection()
-        {
+            string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
+            _mongoDbConnection = new MongoDbConnection(connectionString);
 
+
+            // Initialize appointments list (populate with dummy data for demonstration)
+            List<AppointmentInfo> appointmentsList = new List<AppointmentInfo>
+    {
+        new AppointmentInfo
+        {
+            PatientName = "John Doe",
+            PatientID = "#1234",
+            AppointmentTime = DateTime.Now.AddHours(1)
+        },
+        new AppointmentInfo
+        {
+            PatientName = "Jane Smith",
+            PatientID = "#5678",
+            AppointmentTime = DateTime.Now.AddHours(2)
         }
+        // Add more appointments as needed
+    };
+
+            // Set DataContext to the first appointment in the list
+            if (appointmentsList.Count > 0)
+            {
+                this.DataContext = appointmentsList[0];
+            }
+        }
+
+
+
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {

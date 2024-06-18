@@ -17,11 +17,16 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for PatientFile.xaml
     /// </summary>
+    /// 
+    
     public partial class PatientFile : Window
     {
+        private readonly MongoDbConnection _mongoDbConnection;
         public PatientFile()
         {
             InitializeComponent();
+            string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
+            _mongoDbConnection = new MongoDbConnection(connectionString);
         }
         private void Patients_Click(object sender, RoutedEventArgs e)
         {

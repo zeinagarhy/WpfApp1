@@ -6,9 +6,13 @@ namespace WpfApp1
 {
     public partial class Financce : Window
     {
+
+        private readonly MongoDbConnection _mongoDbConnection;
         public Financce()
         {
             InitializeComponent();
+            string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
+            _mongoDbConnection = new MongoDbConnection(connectionString);
         }
 
         // Event handler for the Home button click

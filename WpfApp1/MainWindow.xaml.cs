@@ -1,4 +1,4 @@
-﻿using WpfApp1.classes;
+﻿using WpfApp1.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            new DB();
+            //new DB();
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e)
