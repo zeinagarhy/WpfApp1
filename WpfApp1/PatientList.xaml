@@ -28,7 +28,7 @@
             </Setter>
         </Style>
         <!--// Toggle Button Style Template //-->
-        <ImageBrush x:Key="tb_mouse_over" ImageSource="C:\Users\zeina\Desktop\865b07a7-6827-4200-af57-d0677f31b66e.jpg"/>
+       
 
 
 
@@ -522,7 +522,7 @@ Width="230">
                         <ListViewItem.ToolTip>
 
                             <ToolTip x:Name="tt_chatbot"
-                                 Content="Appointments"
+                                 Content="Chatbot"
                                  Style="{StaticResource tt_style}"/>
 
                         </ListViewItem.ToolTip>

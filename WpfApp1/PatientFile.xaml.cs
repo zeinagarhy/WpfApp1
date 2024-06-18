@@ -62,9 +62,12 @@ namespace WpfApp1
             ap.Show();
             this.Close();
         }
+
         private void home_Click(object sender, RoutedEventArgs e)
         {
-            // Add your logic here for handling the Home button click
+            DoctorDashboard ap = new DoctorDashboard();
+            ap.Show();
+            this.Close();
         }
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -363,7 +366,7 @@ namespace WpfApp1
             Button clickedButton = (Button)sender;
             Prescriptions.Visibility = Visibility.Collapsed;
             Tasks.Visibility = Visibility.Collapsed;
-            HistoryAssessment.Visibility = Visibility.Collapsed;
+            Assessment.Visibility = Visibility.Collapsed;
             Appointments_Fees.Visibility = Visibility.Collapsed;
             Comments.Visibility = Visibility.Collapsed;
 
@@ -379,16 +382,16 @@ namespace WpfApp1
 
             // Change button content color to black
             clickedButton.Foreground = Brushes.Black;
-            if (clickedButton.Content.Equals("History"))
+            if (clickedButton.Content.Equals("Assessment"))
             {
-                HistoryAssessment.Visibility = Visibility.Visible;
+                Assessment.Visibility = Visibility.Visible;
             }
-            /*else if (clickedButton.Content.Equals("Prescriptions"))
+            else if (clickedButton.Content.Equals("Prescriptions"))
             {
 
-                generateALLPresc(PatientID);
-                //Prescriptions.Visibility = Visibility.Visible;
-            }*/
+                //generateALLPresc(PatientID);
+                Prescriptions.Visibility = Visibility.Visible;
+            }
             else if (clickedButton.Content.Equals("Appointments and Fees"))
             {
                 Appointments_Fees.Visibility = Visibility.Visible;
@@ -460,6 +463,7 @@ namespace WpfApp1
 
             GeneratePresc(samplePrescription);
         }
+
 
         private void GeneratePresc(Prescription p)
         {

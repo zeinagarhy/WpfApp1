@@ -546,7 +546,7 @@ Width="230">
                             <ListViewItem.ToolTip>
 
                                 <ToolTip x:Name="tt_chatbot"
-                                 Content="Appointments"
+                                 Content="Chatbot"
                                  Style="{StaticResource tt_style}"/>
 
                             </ListViewItem.ToolTip>

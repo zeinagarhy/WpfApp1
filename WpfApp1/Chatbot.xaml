@@ -68,5 +68,8 @@
             <TextBox x:Name="UserInputTextBox" Width="600" Height="30" VerticalAlignment="Center"/>
             <Button Content="Send" Width="100" Height="30" VerticalAlignment="Center" Click="SendButton_Click"/>
         </StackPanel>
+        
+        
+       
     </Grid>
 </Window>

@@ -27,6 +27,49 @@ public class MongoDbConnection
             throw; // Rethrow the exception to indicate a failure to connect
         }
     }
+    public void AddPrescriptionsCollection()
+    {
+        if (_database == null)
+        {
+            MessageBox.Show("No database selected. Please select a database first.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+
+        try
+        {
+            // Check if the collection already exists
+            var filter = new BsonDocument("name", "Prescriptions");
+            var collections = _database.ListCollections(new ListCollectionsOptions { Filter = filter });
+            if (collections.Any())
+            {
+                MessageBox.Show("The 'Prescriptions' collection already exists.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            // Create the collection
+            _database.CreateCollection("Prescriptions");
+            MessageBox.Show("The 'Prescriptions' collection has been created successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            // Optionally, insert an initial document into the collection
+            var prescriptionsCollection = _database.GetCollection<BsonDocument>("Prescriptions");
+
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"An error occurred while creating the 'Prescriptions' collection: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+
+
+    }
+    public IMongoCollection<T> GetCollection<T>(string collectionName)
+    {
+        if (_database == null)
+        {
+            throw new InvalidOperationException("No database selected.");
+        }
+        return _database.GetCollection<T>(collectionName);
+    }
 
     public void ShowDatabases()
     {

@@ -227,22 +227,23 @@
                             <StackPanel Orientation="Vertical" Width="650" Height="260">
                                 <StackPanel Orientation="Horizontal" Height="112">
                                     <Grid Width="325">
-                                        <TextBlock Text="Password" FontSize="20" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Center" Foreground="#54382f"></TextBlock>
-                                    </Grid>
-                                    <Grid Width="325">
-                                        <TextBox Name="PasswordTextBox" Height="40" Background="#f8f4f3" VerticalAlignment="Center"></TextBox>
-                                    </Grid>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Height="112">
-                                    <Grid Width="325">
-                                        <TextBlock Text="New Password" FontSize="20" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Top" Foreground="#54382f" Margin="0,6,0,0"></TextBlock>
-                                    </Grid>
-                                    <Grid Width="325">
-                                        <TextBox Name="newPasswordTextBox" Height="40" Background="#f8f4f3" VerticalAlignment="Top" Margin="0,-4,0,0"/>
-                                    </Grid>
-                                </StackPanel>
+                                    <TextBlock Text="Current Password" FontSize="20" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Center" Foreground="#54382f"></TextBlock>
+                        </Grid>
+                        <Grid Width="325">
+                            <PasswordBox Name="PasswordTextBox" Height="40" Background="#f8f4f3" VerticalAlignment="Center"></PasswordBox>
+                        </Grid>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Height="112">
+                    <Grid Width="325">
+                        <TextBlock Text="New Password" FontSize="20" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Top" Foreground="#54382f" Margin="0,6,0,0"></TextBlock>
+                    </Grid>
+                    <Grid Width="325">
+                        <PasswordBox Name="NewPasswordTextBox" Height="40" Background="#f8f4f3" VerticalAlignment="Top" Margin="0,-4,0,0"/>
+                    </Grid>
+                </StackPanel>
                                 <Grid Height="30" Width="200">
-                                    <Button Name="ChangePassword" Content="Change Password" Foreground="White" Background="#9bb169" Margin="0,-70,0,70" ></Button>
+                                    <Button Name="ChangePasswordTextBox" Content="Change Password" Foreground="White" Background="#9bb169" Margin="0,-70,0,70" ></Button>
                                 </Grid>
                             </StackPanel>
                         </Grid>
@@ -668,7 +669,7 @@ Width="230">
                         <ListViewItem.ToolTip>
 
                             <ToolTip x:Name="tt_chatbot"
-                                 Content="Appointments"
+                                 Content="Chatbot"
                                  Style="{StaticResource tt_style}"/>
 
                         </ListViewItem.ToolTip>

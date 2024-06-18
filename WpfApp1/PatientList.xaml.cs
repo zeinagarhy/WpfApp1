@@ -24,11 +24,12 @@ namespace WpfApp1
         public PatientList()
         {
             InitializeComponent();
-           
-        string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
-        _mongoDbConnection = new MongoDbConnection(connectionString);
 
-    }
+            string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
+            _mongoDbConnection = new MongoDbConnection(connectionString);
+
+
+        }
         private void Patients_Click(object sender, RoutedEventArgs e)
         {
             PatientList ap = new PatientList();
@@ -42,9 +43,12 @@ namespace WpfApp1
             ap.Show();
             this.Close();
         }
+
         private void home_Click(object sender, RoutedEventArgs e)
         {
-            // Add your logic here for handling the Home button click
+            DoctorDashboard ap = new DoctorDashboard();
+            ap.Show();
+            this.Close();
         }
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -165,4 +169,3 @@ namespace WpfApp1
         }
     }
 }
- 

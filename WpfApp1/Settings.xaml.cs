@@ -1,23 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-   
     public partial class Settings : Window
     {
         private readonly MongoDbConnection _mongoDbConnection;
@@ -28,9 +16,8 @@ namespace WpfApp1
             InitializeComponent();
             string connectionString = "mongodb+srv://nour:nour@cluster0.dd4wfw5.mongodb.net/";
             _mongoDbConnection = new MongoDbConnection(connectionString);
-
+            //_database = _mongoDbConnection.GetDatabase("YourDatabaseName"); // Replace with your actual database name
         }
-
 
         private void ChangeUsername_Click(object sender, RoutedEventArgs e)
         {
@@ -45,7 +32,7 @@ namespace WpfApp1
 
             try
             {
-                _mongoDbConnection.ChangeUsername(currentUsername, newUsername, "Users"); // Assuming "Users" is your collection name
+                ChangeUsername(currentUsername, newUsername, "Users"); // Assuming "Users" is your collection name
             }
             catch (Exception ex)
             {
@@ -79,61 +66,87 @@ namespace WpfApp1
             }
         }
 
+        private void ChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            string currentPassword = PasswordTextBox.Password.Trim();
+            string newPassword = NewPasswordTextBox.Password.Trim();
 
+            if (string.IsNullOrEmpty(currentPassword) || string.IsNullOrEmpty(newPassword))
+            {
+                MessageBox.Show("Both current and new passwords are required.");
+                return;
+            }
 
+            try
+            {
+                ChangePassword(currentPassword, newPassword, "Users"); // Assuming "Users" is your collection name
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
+        public void ChangePassword(string currentPassword, string newPassword, string collectionName)
+        {
+            var collection = _database.GetCollection<BsonDocument>(collectionName);
 
+            try
+            {
+                var filter = Builders<BsonDocument>.Filter.Eq("Password", currentPassword);
+                var update = Builders<BsonDocument>.Update.Set("Password", newPassword);
+
+                var result = collection.UpdateOne(filter, update);
+
+                if (result.ModifiedCount > 0)
+                {
+                    MessageBox.Show("Password updated successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update password. User not found or new password is the same as the current one.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to update password: {ex.Message}");
+            }
+        }
+
+        // Other existing event handlers...
 
         private void patients_Click(object sender, RoutedEventArgs e)
         {
             PatientList ap = new PatientList();
             ap.Show();
             this.Close();
-
         }
+
         private void shortcut_patients_Click(object sender, RoutedEventArgs e)
         {
             PatientList ap = new PatientList();
             ap.Show();
             this.Close();
-
         }
-
-
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             // Set tooltip visibility
-
             if (Tg_Btn.IsChecked == true)
             {
                 tt_home.Visibility = Visibility.Collapsed;
                 tt_finance.Visibility = Visibility.Collapsed;
-                
                 tt_patients.Visibility = Visibility.Collapsed;
-                //tt_settings.Visibility = Visibility.Collapsed;
                 tt_appointements.Visibility = Visibility.Collapsed;
             }
             else
             {
                 tt_home.Visibility = Visibility.Visible;
                 tt_finance.Visibility = Visibility.Visible;
-                
                 tt_patients.Visibility = Visibility.Visible;
-                //tt_settings.Visibility = Visibility.Visible;
                 tt_appointements.Visibility = Visibility.Visible;
             }
         }
-
-        /*private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
-        {
-            img_bg.Opacity = 1;
-        }
-
-        private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
-        {
-            img_bg.Opacity = 0.3;
-        }*/
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -144,12 +157,14 @@ namespace WpfApp1
         {
             Close();
         }
+
         private void chatbot_Click(object sender, RoutedEventArgs e)
         {
             Chatbot ap = new Chatbot();
             ap.Show();
             this.Close();
         }
+
         private void finance_Click(object sender, RoutedEventArgs e)
         {
             Financce ap = new Financce();
@@ -163,18 +178,17 @@ namespace WpfApp1
             ap.Show();
             this.Close();
         }
+
         private void shortcut_chatbot_Click(object sender, RoutedEventArgs e)
         {
             Chatbot ap = new Chatbot();
             ap.Show();
             this.Close();
-
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            // Your code here...
         }
 
         private void home_Click(object sender, RoutedEventArgs e)
@@ -190,12 +204,6 @@ namespace WpfApp1
             //doctorDashboard.Show();
             this.Close();
         }
-
-    
-     
-
-
-
 
         private void settings_Click(object sender, RoutedEventArgs e)
         {

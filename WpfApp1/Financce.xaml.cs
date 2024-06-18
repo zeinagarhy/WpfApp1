@@ -16,9 +16,12 @@ namespace WpfApp1
         }
 
         // Event handler for the Home button click
+
         private void home_Click(object sender, RoutedEventArgs e)
         {
-            // Add your logic here for handling the Home button click
+            DoctorDashboard ap = new DoctorDashboard();
+            ap.Show();
+            this.Close();
         }
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -65,6 +68,7 @@ namespace WpfApp1
             ap.Show();
             this.Close();
         }
+
 
         private void shortcut_finance_Click(object sender, RoutedEventArgs e)
         {
