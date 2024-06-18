@@ -9,11 +9,12 @@ public class MongoDbConnection
 {
     private readonly IMongoClient _client;
     private IMongoDatabase _database;
+    private readonly string _connectionString;
 
     public MongoDbConnection(string connectionString)
     {
         _client = new MongoClient(connectionString);
-
+        _connectionString = connectionString;
         try
         {
             // Connect to the default database (optional)
@@ -25,6 +26,25 @@ public class MongoDbConnection
             Console.WriteLine($"Failed to connect to MongoDB: {ex.Message}");
             _database = null; // Ensure _database is null on connection failure
             throw; // Rethrow the exception to indicate a failure to connect
+        }
+    }
+    public void AddDoctor(BsonDocument doctor)
+    {
+        if (_database == null)
+        {
+            MessageBox.Show("No database selected. Please select a database first.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+
+        try
+        {
+            var collection = _database.GetCollection<BsonDocument>("doctors"); // Replace 'test' with your actual collection name
+            collection.InsertOne(doctor);
+            MessageBox.Show("Doctor added successfully!");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Failed to add doctor: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
     public void AddPrescriptionsCollection()

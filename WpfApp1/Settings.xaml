@@ -153,10 +153,24 @@
                     <Grid>
                         <StackPanel Orientation="Vertical">
                             <Grid Width="500" Height="100">
-                                <TextBlock Text="User Name" Height="40" Width="200" FontSize="25" FontWeight="Bold" FontFamily="Inter" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#54382f"></TextBlock>
+                                <TextBlock Text="Add Doctor" Height="40" Width="200" FontSize="25" FontWeight="Bold" FontFamily="Inter" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#54382f"></TextBlock>
                             </Grid>
-                            <Grid Height="50">
-                                <Button Content="Change profile picture" Width="300" HorizontalAlignment="Left" Foreground="White" FontFamily="Inter" FontWeight="SemiBold" FontSize="15" Background="#9bb169"></Button>
+                            <Grid>
+                                <StackPanel Margin="20">
+                                    <TextBlock Text="Name" />
+                                    <TextBox x:Name="NameTextBox" />
+
+                                    <Button Content="Save" Click="SaveBtn_Click" Margin="0,0,0,0" Height="23" RenderTransformOrigin="0.5,0.5">
+                                        <Button.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1"/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Button.RenderTransform>
+                                    </Button>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
                     </Grid>
@@ -167,7 +181,7 @@
                 <StackPanel Height="260" Width="1450" Orientation="Horizontal">
                     <Grid Width="725">
                         <Grid Width="700">
-                            <Rectangle Fill="#FFF8F8F8" Stroke="LightGray" RadiusX="20" RadiusY="20"></Rectangle>
+                            <Rectangle Fill="#FFF8F8F8" Stroke="LightGray" RadiusX="20" RadiusY="20" Margin="0,10,0,0"></Rectangle>
                             <StackPanel Orientation="Vertical" Width="650" Height="260">
                                 <StackPanel Orientation="Horizontal" Height="112">
                                     <Grid Width="325">
@@ -185,9 +199,7 @@
                                         <TextBox Name="NewUsernameTextBox"  Height="40" Background="#f8f4f3" VerticalAlignment="Center"></TextBox>
                                     </Grid>
                                 </StackPanel>
-                                <Grid Height="30" Width="200">
-                                    <Button Name="ChangeUsernameTextBox" Content="Change Username" Click="ChangeUsername_Click" Foreground="White" Background="#9bb169"></Button>
-                                </Grid>
+
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -227,21 +239,21 @@
                             <StackPanel Orientation="Vertical" Width="650" Height="260">
                                 <StackPanel Orientation="Horizontal" Height="112">
                                     <Grid Width="325">
-                                    <TextBlock Text="Current Password" FontSize="20" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Center" Foreground="#54382f"></TextBlock>
-                        </Grid>
-                        <Grid Width="325">
-                            <PasswordBox Name="PasswordTextBox" Height="40" Background="#f8f4f3" VerticalAlignment="Center"></PasswordBox>
-                        </Grid>
-                </StackPanel>
+                                        <TextBlock Text="Current Password" FontSize="20" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Center" Foreground="#54382f"></TextBlock>
+                                    </Grid>
+                                    <Grid Width="325">
+                                        <PasswordBox Name="PasswordTextBox" Height="40" Background="#f8f4f3" VerticalAlignment="Center"></PasswordBox>
+                                    </Grid>
+                                </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Height="112">
-                    <Grid Width="325">
-                        <TextBlock Text="New Password" FontSize="20" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Top" Foreground="#54382f" Margin="0,6,0,0"></TextBlock>
-                    </Grid>
-                    <Grid Width="325">
-                        <PasswordBox Name="NewPasswordTextBox" Height="40" Background="#f8f4f3" VerticalAlignment="Top" Margin="0,-4,0,0"/>
-                    </Grid>
-                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="112">
+                                    <Grid Width="325">
+                                        <TextBlock Text="New Password" FontSize="20" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Top" Foreground="#54382f" Margin="0,6,0,0"></TextBlock>
+                                    </Grid>
+                                    <Grid Width="325">
+                                        <PasswordBox Name="NewPasswordTextBox" Height="40" Background="#f8f4f3" VerticalAlignment="Top" Margin="0,-4,0,0"/>
+                                    </Grid>
+                                </StackPanel>
                                 <Grid Height="30" Width="200">
                                     <Button Name="ChangePasswordTextBox" Content="Change Password" Foreground="White" Background="#9bb169" Margin="0,-70,0,70" ></Button>
                                 </Grid>
@@ -631,7 +643,7 @@ Width="230">
                             </StackPanel>
                             <Button x:Name="settings" Background="Transparent" BorderBrush="Transparent" Click="settings_Click" Margin="0,10,192,0"></Button>
                         </Grid>
-                        
+
                         <!--// Tooltip //-->
 
                         <ListViewItem.ToolTip>

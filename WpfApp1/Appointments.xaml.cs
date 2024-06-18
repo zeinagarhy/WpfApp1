@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using WpfApp1.Classes;
+//using WpfApp1.Classes;
 
 namespace WpfApp1
 {
